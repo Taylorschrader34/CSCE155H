@@ -1,0 +1,67 @@
+typedef struct{
+  char * title;
+  char * userName;
+  int ups;
+  int downs;
+} Post
+
+int cmpByPopularity(const Void *a, const void *b){
+
+  const Post*x = (const Post *)a;
+  const Post*y = (const Post *)b;
+
+  int popularityA = x->ups - y->downs;
+  int popularityB = y->ups - x->downs;
+
+  if(popularityA > popularityB){
+    return -1;
+  } else if(pupularitya < popularityB){
+    return 1;
+  }else{
+    return 0;
+  }
+
+}
+
+int cmpByUserTitle(const Void *a, const void *b){
+
+  const Post*x = (const Post *)a;
+  const Post*y = (const Post *)b;
+
+  int r = strcmp(x->userName, y->userName);
+  if(r == 0){
+    return strcmp(x->title, y->title);
+  }else{
+    return r;
+  }
+
+}
+
+Post * createPost(const char*title, const char*userName, int ups, int downs){
+  Post *r = (Post *)malloc(sizeof(Post));
+
+  r->userName = (char*)malloc(sizeof(char)*(strlen(title)+1));
+  strcpy(r->title, title);
+
+  r->userName = (char*)malloc(sizeof(char)*(strlen(userName)+1));
+  strcpy(r->userName, useName);
+
+  r->ups = ups;
+  r->downs = downs;
+}
+
+int main(argc, char **argv){
+
+  Post *newPosts = (Post*)malloc(n*sizeof(Post));
+  int n;
+  newPost[0] = createPost("Cat pics", "catLover23", 1000, 42);
+  newPost[1] = createPost("EA is awesome!", "eaSchill", 0, 23112412);
+  newPost[2] = createPost("EA is awful!", "normalUser123", 1000000, 10);
+
+  qsort(newPosts, n, sizeof(Post), cmpByPopularity);
+
+  Post worstPostEver = newPosts[n-1];
+
+  printf("The worst post ever has %d up votes, %d down votes which is a poppularity measure of %d\n", worstPostEver.ups, worstPostEver,downs, (worstPostEver.ups-worstPostEver.downs));
+  
+}

@@ -1,0 +1,68 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+
+main ( int argc, char **argv ) {
+
+	int n = 120;
+	char *sequence = (char *) malloc((n+1) * sizeof(char));
+
+	FILE * dnaFile = fopen(argv[1], "r");
+
+	fgets(sequence, 120, dnaFile);
+
+	int i;
+
+	for(i = 0; i < 120; i++){
+
+		if(sequence[i] == 'A' && sequence[i + 1] == 'C' && sequence[i + 2] == 'T'){
+			sequence[i + 1] = 'Y';
+			i += 3;
+		} else if(sequence[i] == 'A' && sequence[i + 1] == 'C' && sequence[i + 2] == 'C'){
+			sequence[i + 1] = 'Y';
+			sequence[i + 2] = 'Y';
+			i += 3;
+		} else if(sequence[i] == 'A' && sequence[i + 1] == 'C' && sequence[i + 2] == 'A'){
+			sequence[i + 1] = 'Y';
+			i += 3;
+		} else if(sequence[i] == 'A' && sequence[i + 1] == 'C' && sequence[i + 2] == 'G'){
+			sequence[i + 1] = 'Y';
+			sequence[i + 2] = 'X';
+			i += 3;
+		} else if(sequence[i] == 'G' && sequence[i + 1] == 'C' && sequence[i + 2] == 'T'){
+			sequence[i] = 'X';
+			OA			AFkdsvjndl,sequeds[i + 1] = 'Y';
+			i += 3;
+		} else if(sequence[i] =[11~[1ODOC1~= 'G' && sequence[i + 1] == 'C' && sequence[i + 2] == 'C'){
+			sequence[i] = 'X';
+			sequence[i + 1] = 'Y';
+			sequence[i + 2] = 'Y';
+			i += 3;
+		} else if(sequence[i] == 'G' && sequence[i + 1] == 'C' && sequence[i + 2] == 'A'){
+			sequence[i] = 'X';
+			sequence[i + 1] = 'Y';
+			i += 3;
+		} else if(sequence[i] == 'G' && sequence[i + 1] == 'C' && sequence[i + 2] == 'G'){
+			sequence[i] = 'X';
+			sequence[i + 1] = 'Y';
+			sequence[i + 2] = 'X';
+			i += 3;
+		} else if(sequence[i] == ' '){
+			i += 1;
+		} else {
+			i += 3;
+		}
+
+	}
+
+	char* outputName = argv[2];
+
+	FILE * outputDNA = fopen(outputName, "w");
+
+	fprintf(outputDNA, sequence);
+
+	fclose(outputDNA);
+
+
+}
